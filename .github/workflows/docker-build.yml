@@ -19,9 +19,9 @@ jobs:
       - name: Check if docker is installed
         run: docker version
       - name: Build our container
-        run: docker build -t simple-go-api .
+        run: docker build -t simplewilliamz/go-api-github .
       - name: Start the docker
-        run: docker run -d -p 8000:8000 simple-go-api
+        run: docker run -d -p 8000:8000 simplewilliamz/go-api-github
       - name: Test app
         run: curl http://localhost:8000/books
       - name: Login to dockerhub
