@@ -8,9 +8,9 @@ jobs:
   build_backend_docker_file:
     runs-on: ubuntu-latest
     steps:
-       - name: Checkout repository
-         uses: actions/checkout@v3
-      - name: "Print what we are doing"
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Print what we are doing
         run: echo "Hello we are running in github action"
       - name: "Download Docker install script"
         run: curl -fsSL https://get.docker.com -o get-docker.sh
