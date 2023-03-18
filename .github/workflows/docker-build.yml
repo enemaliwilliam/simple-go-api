@@ -11,8 +11,14 @@ jobs:
       - name: "Print what we are doing"
         run: echo "Hello we are running in github action"
       - name: "Download Docker install script"
-        run:  curl -fsSL https://get.docker.com -o get-docker.sh
+        run: curl -fsSL https://get.docker.com -o get-docker.sh
       - name: Install Docker with script
-        run: sudo sh ./get-docker.sh 
+        run: sudo sh ./get-docker.sh
       - name: Check if docker is installed
         run: docker version
+      - name: Build our container
+        run: docker build -t simple-go-api .
+      - name: Start the docker
+        run: docker run -d -p 8000:8000 simple-go-api
+      - name: Test app
+        run: curl http://localhost:8000/books
