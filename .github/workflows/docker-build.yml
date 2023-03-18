@@ -1,7 +1,8 @@
 name: Our Custom workflow
 
 on:
-  push: ["main"]
+  push:
+    branches: ["main"]
 
 jobs:
   build_backend_docker_file:
