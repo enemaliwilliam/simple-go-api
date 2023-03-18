@@ -39,8 +39,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: List folder
-         run: echo ls -al
+        run: echo ls -al
 
      - name: Create folder
-        run: mkdir newfolder
+       run: mkdir newfolder
 
