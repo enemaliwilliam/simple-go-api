@@ -20,7 +20,8 @@ env:
   REGISTRY: hub.docker.com
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-
+  docker_user: simplewilliam
+  docker_pass: ${{ secrets.DOCKER_PASSWORD}}
 
 jobs:
   build:
