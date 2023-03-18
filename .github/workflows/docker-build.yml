@@ -24,3 +24,7 @@ jobs:
         run: docker run -d -p 8000:8000 simple-go-api
       - name: Test app
         run: curl http://localhost:8000/books
+      - name: Login to dockerhub
+        run: docker login -u simplewilliamz -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push image tp dockerhub
+        run: docker push simplewilliamz/go-api-github
