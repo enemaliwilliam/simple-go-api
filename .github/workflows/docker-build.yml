@@ -5,26 +5,34 @@ on:
     branches: ["main"]
 
 jobs:
-  build_backend_docker_file:
+  setupSytem:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Print what we are doing
-        run: echo "Hello we are running in github action"
       - name: "Download Docker install script"
         run: curl -fsSL https://get.docker.com -o get-docker.sh
       - name: Install Docker with script
         run: sudo sh ./get-docker.sh
       - name: Check if docker is installed
         run: docker version
-      - name: Build our container
-        run: docker build -t simplewilliamz/go-api-github .
-      - name: Start the docker
-        run: docker run -d -p 8000:8000 simplewilliamz/go-api-github
-      - name: Test app
-        run: curl http://localhost:8000/books
       - name: Login to dockerhub
         run: docker login -u simplewilliamz -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Push image tp dockerhub
-        run: docker push simplewilliamz/go-api-github
+  build_backend_docker_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Navigate to backend folder
+        run: echo "Going to backend"
+      - name: Build container
+        run: docker build -t simplewilliamz/backend-go-api .
+      - name: Push image to dockerhub
+        run: docker push simplewilliamz/backend-go-api
+  build_frontend_docker_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Navigate to frontend folder
+        run: echo "Go frontend folder"
+      - name: Build container
+        run: docker build -t simplewilliamz/backend-go-api .
+      - name: Push image to dockerhub
+        run: docker push simplewilliamz/backend-go-api
