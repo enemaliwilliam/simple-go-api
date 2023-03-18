@@ -7,6 +7,7 @@ COPY . .
 RUN go mod init go_restapi
 RUN go get -u github.com/gorilla/mux
 RUN go build
+RUN mkdir alpine
 
 EXPOSE 8000
 
