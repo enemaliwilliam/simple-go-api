@@ -28,6 +28,8 @@ jobs:
         run: echo "Going to backend"
       - name: Build container
         run: docker build -t simplewilliamz/backend-go-api .
+      - name: Login to dockerhub
+        run: docker login -u simplewilliamz -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image to dockerhub
         run: docker push simplewilliamz/backend-go-api
   build_frontend_docker_file:
@@ -40,5 +42,7 @@ jobs:
         run: echo "Go frontend folder"
       - name: Build container
         run: docker build -t simplewilliamz/backend-go-api .
+      - name: Login to dockerhub
+        run: docker login -u simplewilliamz -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Push image to dockerhub
         run: docker push simplewilliamz/backend-go-api
