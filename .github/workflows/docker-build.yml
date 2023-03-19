@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: setupSytem
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Navigate to backend folder
         run: echo "Going to backend"
       - name: Build container
@@ -32,6 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: setupSytem
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Navigate to frontend folder
         run: echo "Go frontend folder"
       - name: Build container
